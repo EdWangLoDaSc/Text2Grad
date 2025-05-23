@@ -16,7 +16,6 @@ def analyze_test_results(example: Dict[str, Any]) -> str:
     passed = log.get('passed', False)
     stdout = log.get('stdout', '')
     stderr = log.get('stderr', '')
-    # Ensure test_question comes from the main example dict if that's correct
     test_question = example.get('test', '')
 
     prompt = f"""Analyze the following code solution for the given problem:
@@ -32,12 +31,10 @@ Submitted Code:
 '''
 
 Test Results:
-Passed: {passed}""" # Note: {passed} will be True/False (boolean)
+Passed: {passed}"""
 
-    # Use the boolean directly for the condition
     if passed is False:
         prompt += f"\nTest Question:\n{test_question}\n"
-        # Use stderr for error output if tests failed
         prompt += f"\nError Output:\n{stdout}"
     prompt += """
 
@@ -137,10 +134,8 @@ def process_data(input_filepath: str, output_filepath: str, batch_size: int = 5)
             with open(temp_output_filepath, 'w', encoding='utf-8') as f_temp:
                 json.dump(processed_data, f_temp, ensure_ascii=False, indent=4)
 
-<<<<<<< HEAD
     with open(output_filepath, 'w', encoding='utf-8') as f:
         json.dump(processed_data, f, ensure_ascii=False, indent=4)
-=======
     print(f"Saving final augmented data ({len(processed_data)} items) to: {output_filepath}")
     try:
         with open(output_filepath, 'w', encoding='utf-8') as f:
@@ -148,7 +143,6 @@ def process_data(input_filepath: str, output_filepath: str, batch_size: int = 5)
         print("Final data saved successfully.")
     except IOError as e:
         print(f"Error: Could not write final output file to {output_filepath}. Error: {e}")
->>>>>>> ead124ae444d74cef272025a2c8db2ae4ceeb16c
 
 if __name__ == "__main__":
     INPUT_FILE = "./data/KodCode_RM_train.json"
