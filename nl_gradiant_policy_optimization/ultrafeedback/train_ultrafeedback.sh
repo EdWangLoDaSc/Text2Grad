@@ -8,7 +8,7 @@ REWARD_MODEL_NAME="<your_reward_model_path>"
 
 # Base model configuration
 BASE_MODEL_ADAPTER_MODEL="" 
-BASE_MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct"  # text-generation qa->f+s
+BASE_MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct"
 # Output and logging
 OUTPUT_DIR="ckpt/text2grad-llama31-8B-Instruct-UltraFeedback"
 LOG_WITH="wandb"  # Options: wandb, tensorboard, or none
